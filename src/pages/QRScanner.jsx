@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Html5QrcodeScanner } from "html5-qrcode";
 import { TrackingContext } from "../context/TrackingContext";
 
-// Contoh list kota besar di Indonesia
+// Daftar kota besar di Indonesia
 const KOTA_INDONESIA = [
   { name: "Aceh", coord: [5.5500, 95.3170] },
   { name: "Medan", coord: [3.5952, 98.6722] },
@@ -28,9 +28,7 @@ const KOTA_INDONESIA = [
   { name: "Banjarmasin", coord: [-3.3160, 114.5946] },
   { name: "Jayapura", coord: [-2.5336, 140.7181] },
   { name: "Manokwari", coord: [-0.8617, 134.0628] },
-  // Bisa ditambahkan kota lain sesuai kebutuhan
 ];
-
 
 const QRScanner = () => {
   const { addItem } = useContext(TrackingContext);
@@ -40,6 +38,7 @@ const QRScanner = () => {
   const [cpLocations, setCpLocations] = useState(["Jakarta"]);
   const [scannedUid, setScannedUid] = useState("");
 
+  // Scan QR
   const handleScan = () => {
     const scanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: 250 });
     scanner.render((uid) => {
@@ -49,6 +48,7 @@ const QRScanner = () => {
     });
   };
 
+  // Submit barang baru
   const handleSubmit = () => {
     if (!scannedUid) return alert("Silakan scan barcode dulu!");
     const newItem = {
@@ -86,6 +86,7 @@ const QRScanner = () => {
     setScannedUid("");
   };
 
+  // Tambah / Hapus CP
   const addCP = () => setCpLocations((prev) => [...prev, "Jakarta"]);
   const removeCP = (idx) => setCpLocations((prev) => prev.filter((_, i) => i !== idx));
 
@@ -98,10 +99,10 @@ const QRScanner = () => {
 
   return (
     <div className="p-4">
-      <h2>QR Scanner & Input Barang</h2>
+      <h2 className="mb-3">QR Scanner & Input Barang</h2>
 
       <div className="mb-3">
-        <label>Nama Barang:</label>
+        <label className="form-label">Nama Barang:</label>
         <input
           type="text"
           className="form-control"
@@ -112,9 +113,9 @@ const QRScanner = () => {
       </div>
 
       <div className="mb-3">
-        <label>Scan / Upload Barcode:</label>
-        <div className="d-flex mb-2">
-          <button className="btn btn-secondary me-2" onClick={handleScan}>
+        <label className="form-label">Scan / Upload Barcode:</label>
+        <div className="d-flex mb-2 flex-wrap gap-2">
+          <button className="btn btn-secondary" onClick={handleScan}>
             Scan Barcode
           </button>
           {scannedUid && <span className="align-self-center">UID: {scannedUid}</span>}
@@ -123,7 +124,7 @@ const QRScanner = () => {
       </div>
 
       <div className="mb-3">
-        <label>Tanggal Pengiriman:</label>
+        <label className="form-label">Tanggal Pengiriman:</label>
         <input
           type="datetime-local"
           className="form-control"
@@ -133,7 +134,7 @@ const QRScanner = () => {
       </div>
 
       <div className="mb-3">
-        <label>PIC / Penanggung Jawab:</label>
+        <label className="form-label">PIC / Penanggung Jawab:</label>
         <input
           type="text"
           className="form-control"
@@ -144,11 +145,11 @@ const QRScanner = () => {
       </div>
 
       <div className="mb-3">
-        <label>Lokasi Checkpoint (CP):</label>
+        <label className="form-label">Lokasi Checkpoint (CP):</label>
         {cpLocations.map((cp, idx) => (
-          <div key={idx} className="d-flex mb-2">
+          <div key={idx} className="d-flex mb-2 gap-2 flex-wrap">
             <select
-              className="form-select me-2"
+              className="form-select flex-grow-1"
               value={cp}
               onChange={(e) =>
                 setCpLocations((prev) => {
@@ -165,16 +166,20 @@ const QRScanner = () => {
               ))}
             </select>
             {cpLocations.length > 1 && (
-              <button className="btn btn-danger" onClick={() => removeCP(idx)}>Hapus</button>
+              <button className="btn btn-danger" onClick={() => removeCP(idx)}>
+                Hapus
+              </button>
             )}
           </div>
         ))}
-        <button className="btn btn-primary mt-2" onClick={addCP}>Tambah CP</button>
+        <button className="btn btn-primary mt-2" onClick={addCP}>
+          Tambah CP
+        </button>
       </div>
 
-      <div className="d-flex">
+      <div className="d-flex flex-wrap gap-2">
         <button
-          className="btn btn-success me-2"
+          className="btn btn-success"
           onClick={handleSubmit}
           disabled={!isFormComplete}
         >

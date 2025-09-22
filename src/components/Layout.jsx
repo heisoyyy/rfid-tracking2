@@ -3,6 +3,8 @@ import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import "../App.css";
+import "./Sidebar.css";
+
 
 function Layout({ onLogout }) {
   const [collapsed, setCollapsed] = useState(false);

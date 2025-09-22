@@ -83,6 +83,7 @@ const History = () => {
         </CSVLink>
       </div>
 
+    <div className="table-responsive">
       <table className="table table-bordered table-striped">
         <thead className="table-dark">
           <tr>
@@ -115,6 +116,7 @@ const History = () => {
           )}
         </tbody>
       </table>
+      </div>
     </div>  
   );
 };

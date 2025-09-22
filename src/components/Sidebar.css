@@ -1,9 +1,16 @@
+/* =========================
+   Sidebar
+========================= */
 .sidebar {
   width: 220px;
   transition: width 0.3s ease, opacity 0.3s ease;
   overflow: hidden;
   opacity: 1;
   white-space: nowrap; /* biar teks nggak turun */
+  background-color: #343a40; /* bg-dark */
+  min-height: 100vh;
+  position: relative;
+  z-index: 100;
 }
 
 .sidebar.collapsed {
@@ -16,6 +23,8 @@
   border-radius: 6px;
   margin: 4px 0;
   transition: background 0.2s ease;
+  color: #fff;
+  display: block;
 }
 
 .sidebar .nav-link:hover {
@@ -25,4 +34,101 @@
 .sidebar .nav-link.active {
   background: #1b3660;
   color: #fff !important;
+}
+
+/* =========================
+   Navbar
+========================= */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+
+.navbar .btn-outline-light {
+  border: 1px solid #fff;
+}
+
+/* =========================
+   Layout Main Content
+========================= */
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #f8f9fa;
+  overflow-y: auto;
+}
+
+/* =========================
+   Responsive Mobile
+========================= */
+@media (max-width: 992px) {
+  .sidebar {
+    position: absolute;
+    left: -220px;
+    top: 0;
+    height: 100%;
+    transition: left 0.3s ease;
+  }
+  .sidebar.collapsed {
+    left: 0;
+    width: 220px;
+    opacity: 1;
+  }
+  .main-content {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar {
+    width: 200px;
+    left: -200px;
+  }
+  .sidebar.collapsed {
+    width: 200px;
+    left: 0;
+  }
+  .navbar .navbar-brand {
+    font-size: 1rem;
+  }
+}
+
+/* =========================
+   Tables & Buttons
+========================= */
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+  overflow-x: auto;
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+}
+
+.btn {
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+/* =========================
+   Alerts
+========================= */
+.alert {
+  margin-bottom: 10px;
+}
+
+/* =========================
+   Images
+========================= */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }

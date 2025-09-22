@@ -1,4 +1,6 @@
 import React from "react";
+import "./Sidebar.css";
+
 
 function Navbar({ onToggle, onLogout }) {
   return (

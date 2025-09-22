@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Polyline, Popup } from "react-leaflet"
 import { TrackingContext } from "../context/TrackingContext";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import "./Dashboard.css"; // optional, bisa untuk styling tambahan
 
 const lerp = (start, end, t) => start + (end - start) * t;
 
@@ -74,14 +75,14 @@ const Dashboard = () => {
   }, [items]);
 
   return (
-    <div className="p-4">
-      <h2 className="mb-4">Dashboard</h2>
+    <div className="p-3">
+      <h2 className="mb-4 text-center">Dashboard</h2>
 
       {/* Daftar Barang */}
       <div className="card mb-4 shadow-sm">
         <div className="card-header bg-success text-white">Daftar Barang</div>
-        <div className="card-body">
-          <table className="table table-bordered table-striped">
+        <div className="card-body table-responsive">
+          <table className="table table-bordered table-striped table-hover">
             <thead className="table-dark">
               <tr>
                 <th>Nama Barang</th>
@@ -108,7 +109,12 @@ const Dashboard = () => {
       <div className="card mb-4 shadow-sm">
         <div className="card-header bg-primary text-white">Peta Perjalanan</div>
         <div className="card-body p-0">
-          <MapContainer center={items[0]?.cpLocations[0] || [-6.2088, 106.8456]} zoom={5} style={{ height: "400px", width: "100%" }}>
+          <MapContainer
+            center={items[0]?.cpLocations[0] || [-6.2088, 106.8456]}
+            zoom={5}
+            style={{ height: "400px", width: "100%" }}
+            scrollWheelZoom={false}
+          >
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
             {items.map((item, idx) => (
               <React.Fragment key={idx}>
@@ -126,11 +132,13 @@ const Dashboard = () => {
       </div>
 
       {/* Status Alerts */}
-      <div className="card shadow-sm">
+      <div className="card shadow-sm mb-4">
         <div className="card-header bg-warning text-dark">Status Alert</div>
         <div className="card-body">
           {alerts.map((a, i) => (
-            <div key={i} className={`alert alert-${a.type} mb-2`}>{a.msg}</div>
+            <div key={i} className={`alert alert-${a.type} mb-2`} role="alert">
+              {a.msg}
+            </div>
           ))}
         </div>
       </div>
