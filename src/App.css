@@ -1,0 +1,54 @@
+/* Root container */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  text-align: left; /* jangan center semua biar lebih natural */
+  background-color: #f8f9fa; /* warna abu-abu bootstrap bg-light */
+}
+
+/* Logo (jika masih dipakai) */
+.logo {
+  height: 60px;
+  padding: 0.5em;
+  transition: filter 0.3s ease-in-out;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 8px rgba(0, 151, 215, 0.6)); /* efek PLN biru */
+}
+
+/* Animasi logo react kalau mau dipertahankan */
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo.spin {
+    animation: logo-spin infinite 15s linear;
+  }
+}
+
+/* Card styling (untuk konsistensi dengan bootstrap card) */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s;
+}
+.card:hover {
+  transform: translateY(-3px);
+}
+
+/* Placeholder class dari template */
+.read-the-docs {
+  color: #6c757d; /* bootstrap gray-600 */
+  font-size: 0.9rem;
+}

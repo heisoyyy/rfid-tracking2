@@ -1,0 +1,49 @@
+/* Import Bootstrap sekali di index.jsx, jangan di App.css */
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+/* === Custom Color Variables (PLN Colors) === */
+:root {
+  --pln-blue: #0097d7;
+  --pln-yellow: #ffd200;
+  --pln-red: #e30613;
+}
+
+/* === Background Utilities === */
+.bg-pln-blue {
+  background-color: var(--pln-blue) !important;
+  color: #fff !important; /* default text white biar kontras */
+}
+
+.bg-pln-yellow {
+  background-color: var(--pln-yellow) !important;
+  color: #000 !important; /* default text hitam biar kontras */
+}
+
+.bg-pln-red {
+  background-color: var(--pln-red) !important;
+  color: #fff !important;
+}
+
+/* === Text Utilities === */
+.text-pln-blue {
+  color: var(--pln-blue) !important;
+}
+
+.text-pln-yellow {
+  color: var(--pln-yellow) !important;
+}
+
+.text-pln-red {
+  color: var(--pln-red) !important;
+}
+
+/* === Optional: Border Utilities === */
+.border-pln-blue {
+  border-color: var(--pln-blue) !important;
+}
+.border-pln-yellow {
+  border-color: var(--pln-yellow) !important;
+}
+.border-pln-red {
+  border-color: var(--pln-red) !important;
+}

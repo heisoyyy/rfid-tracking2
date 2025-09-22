@@ -1,0 +1,28 @@
+.sidebar {
+  width: 220px;
+  transition: width 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+  opacity: 1;
+  white-space: nowrap; /* biar teks nggak turun */
+}
+
+.sidebar.collapsed {
+  width: 0;
+  opacity: 0;
+}
+
+.sidebar .nav-link {
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin: 4px 0;
+  transition: background 0.2s ease;
+}
+
+.sidebar .nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .nav-link.active {
+  background: #1b3660;
+  color: #fff !important;
+}
