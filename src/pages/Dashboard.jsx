@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Polyline, Popup } from "react-leaflet"
 import { TrackingContext } from "../context/TrackingContext";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import "./Dashboard.css"; // optional, bisa untuk styling tambahan
+
 
 const lerp = (start, end, t) => start + (end - start) * t;
 
